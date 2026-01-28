@@ -11,6 +11,12 @@ RUN \
 
 COPY ./etc/crontab /etc/crontabs/root
 
+COPY --chmod=0755 ./bin/git_askpass /bin/
+
+ENV GIT_ASKPASS='/bin/git_askpass'
+
+ENV GIT_TERMINAL_PROMPT='0'
+
 ENTRYPOINT ["/sbin/tini", "--"]
 
 CMD ["crond", "-f", "-L", "/dev/stdout"]

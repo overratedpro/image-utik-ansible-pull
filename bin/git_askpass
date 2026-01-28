@@ -1,0 +1,7 @@
+#!/bin/sh
+
+case "$1" in
+  Username*) echo "${GITHUB_USER}" ;;
+  Password*) echo "${GITHUB_TOKEN}" ;;
+esac
+
