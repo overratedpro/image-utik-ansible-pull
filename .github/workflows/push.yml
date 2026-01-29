@@ -42,7 +42,7 @@ jobs:
       - uses: aws-actions/amazon-ecr-login@v2
       - uses: docker/build-push-action@v6
         with:
-          build-args: "repo_name=${{ github.repository }}"
+          build-args: "repo_name=${{ env.REPO_NAME }}"
           cache-from: "type=registry,ref=ghcr.io/${{ github.repository }}:latest"
           cache-to: type=inline
           context: .
