@@ -2,6 +2,10 @@
 
 FROM alpine:3.23
 
+ARG repo_name
+
+ENV GITHUB_REPO="${repo_name}"
+
 RUN \
   apk add --update --no-cache \
     py3-pip \
