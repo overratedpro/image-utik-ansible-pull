@@ -8,6 +8,7 @@ ENV GITHUB_REPO="${repo_name}"
 
 RUN \
   apk add --update --no-cache \
+    git \
     py3-pip \
     tini \
   && python3 -m pip install --upgrade --break-system-packages --root-user-action=ignore \
