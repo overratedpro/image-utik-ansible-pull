@@ -12,6 +12,7 @@ RUN \
   apk add --update --no-cache \
     gcc \
     git \
+    libffi \
     py3-pip \
     python3-dev \
     tini \
