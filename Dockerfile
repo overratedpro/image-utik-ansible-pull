@@ -10,6 +10,7 @@ ENV GITHUB_REPO="${repo_name}"
 
 RUN \
   apk add --update --no-cache \
+    gcc \
     git \
     py3-pip \
     tini \
