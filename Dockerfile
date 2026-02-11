@@ -13,6 +13,7 @@ RUN \
     gcc \
     git \
     py3-pip \
+    python3-dev \
     tini \
   && python3 -m pip install --upgrade --break-system-packages --root-user-action=ignore \
     ansible
