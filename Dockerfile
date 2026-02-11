@@ -2,6 +2,8 @@
 
 FROM alpine:3.23
 
+ARG TARGETARCH
+
 ARG repo_name
 
 ENV GITHUB_REPO="${repo_name}"
