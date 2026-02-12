@@ -20,8 +20,7 @@ RUN \
     python3-dev \
     python3-pip \
     tini \
-  && _PYTHON_HOST_PLATFORM="linux-$(dpkg --print-architecture)" \
-  python3 -m pip install --upgrade --break-system-packages --root-user-action=ignore \
+  && python3 -m pip install --upgrade --break-system-packages --root-user-action=ignore \
     ansible
 
 COPY ./etc/crontab /etc/crontabs/root
