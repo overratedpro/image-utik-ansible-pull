@@ -1,8 +1,6 @@
 # syntax=docker/dockerfile:1.4
 
-FROM debian:bookworm-slim
-
-ARG TARGETPLATFORM
+FROM --platform=$TARGETPLATFORM debian:bookworm-slim
 
 ARG TARGETARCH
 
@@ -11,8 +9,7 @@ ARG repo_name
 ENV GITHUB_REPO="${repo_name}"
 
 RUN \
-  echo "**** build on ${TARGETPLATFORM} ****" \
-  && export DPKG_FRONTEND=noninteractive \
+  export DPKG_FRONTEND=noninteractive \
   && apt update \
   && apt install -y \
     g++ \
