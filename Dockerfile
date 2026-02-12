@@ -3,25 +3,27 @@
 FROM debian:bookworm-slim
 
 ARG TARGETARCH
+ARG TARGETVARIANT
 
 ARG repo_name
 
 ENV GITHUB_REPO="${repo_name}"
 
 RUN \
-  echo "**** build on ${TARGETARCH} ****" \
+  echo "**** build on ${TARGETARCH}/${TARGETVARIANT} ****" \
   && export DPKG_FRONTEND=noninteractive \
   && apt update \
   && apt install -y \
     g++ \
     gcc \
     git \
-    $([ $TARGETARCH = "arm" ] && echo "libc6") \
+    $([ $TARGETARCH = "arm" ] && [ $TARGETVARIANT = "v5" ] && echo "libc6") \
     libffi-dev \
     python3-dev \
     python3-pip \
     tini \
-  && python3 -m pip install --upgrade --break-system-packages --root-user-action=ignore \
+  && _PYTHON_HOST_PLATFORM="linux-$(dpkg --print-architecture)" \
+  python3 -m pip install --upgrade --break-system-packages --root-user-action=ignore \
     ansible
 
 COPY ./etc/crontab /etc/crontabs/root
