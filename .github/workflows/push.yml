@@ -45,7 +45,7 @@ jobs:
       - uses: docker/build-push-action@v6
         with:
           build-args: "repo_name=${{ env.REPO_NAME }}"
-          #cache-from: "type=registry,ref=ghcr.io/${{ github.repository }}:buildcache"
+          cache-from: "type=registry,ref=ghcr.io/${{ github.repository }}:buildcache"
           cache-to: "type=registry,ref=ghcr.io/${{ github.repository }}:buildcache,mode=max"
           context: .
           platforms: linux/arm/v5,linux/arm64,linux/amd64
