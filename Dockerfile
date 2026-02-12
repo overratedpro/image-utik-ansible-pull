@@ -9,12 +9,14 @@ ARG repo_name
 ENV GITHUB_REPO="${repo_name}"
 
 RUN \
-  export DPKG_FRONTEND=noninteractive \
+  echo "**** build on ${TARGETARCH} ****" \
+  && export DPKG_FRONTEND=noninteractive \
   && apt update \
   && apt install -y \
     g++ \
     gcc \
     git \
+    $([[ $TARGETARCH =~ "arm/v5" ]] && echo "libc") \
     libffi-dev \
     python3-dev \
     python3-pip \
