@@ -2,22 +2,23 @@
 
 FROM debian:bookworm-slim
 
+ARG TARGETPLATFORM
+
 ARG TARGETARCH
-ARG TARGETVARIANT
 
 ARG repo_name
 
 ENV GITHUB_REPO="${repo_name}"
 
 RUN \
-  echo "**** build on ${TARGETARCH}/${TARGETVARIANT} ****" \
+  echo "**** build on ${TARGETPLATFORM} ****" \
   && export DPKG_FRONTEND=noninteractive \
   && apt update \
   && apt install -y \
     g++ \
     gcc \
     git \
-    $([ $TARGETARCH = "arm" ] && [ $TARGETVARIANT = "v5" ] && echo "libc6") \
+    $([ $TARGETARCH = "arm" ] && echo "libc6") \
     libffi-dev \
     python3-dev \
     python3-pip \
