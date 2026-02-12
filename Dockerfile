@@ -16,7 +16,7 @@ RUN \
     g++ \
     gcc \
     git \
-    $([[ $TARGETARCH =~ "arm/v5" ]] && echo "libc") \
+    $([[ $TARGETARCH -eq "arm" ]] && echo "libc") \
     libffi-dev \
     python3-dev \
     python3-pip \
