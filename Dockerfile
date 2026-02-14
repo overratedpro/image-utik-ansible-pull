@@ -4,11 +4,13 @@ FROM --platform=$TARGETPLATFORM debian:bookworm-slim AS builder
 
 ARG TARGETARCH
 
+SHELL ["/bin/sh", "-e", "-o", "pipefail", "-c"]
+
 RUN \
   export DPKG_FRONTEND=noninteractive \
   && apt update \
   && apt install -y \
-    cargo \
+    curl \
     g++ \
     gcc \
     libffi-dev \
@@ -16,9 +18,14 @@ RUN \
     pkg-config \
     python3-dev \
     python3-pip \
-    python3-setuptools-rust \
     python3-wheel \
-    rustc \
+  && curl -sSf --tlsv1.2 https://sh.rustup.rs >/tmp/rust.sh \
+  && chmod +x /tmp/rust.sh \
+  && /tmp/rust.sh \
+    -y \
+    --profile minimal \
+    --default-toolchain \
+    1.85.0 \
   && python3 -m pip install \
     --break-system-packages \
     --no-cache-dir \
