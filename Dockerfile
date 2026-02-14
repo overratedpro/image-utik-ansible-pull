@@ -28,6 +28,7 @@ RUN \
       1.85.0; \
     for name in \
       setuptools-rust \
+      flit-core \
       maturin \
       puccinialin \
     ; do python3 -m pip install \
