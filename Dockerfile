@@ -26,15 +26,18 @@ RUN \
       --profile minimal \
       --default-toolchain \
       1.85.0; \
-    python3 -m pip install \
+    for name in \
+      setuptools-rust \
+      maturin \
+    ; do python3 -m pip install \
       --break-system-packages \
       --no-binary=:all: \
       --no-build-isolation \
       --no-cache-dir \
       --root-user-action=ignore \
       --upgrade \
-      maturin \
-      setuptools-rust; \
+      $name; \
+    done; \
   fi \
   && python3 -m pip install \
     --break-system-packages \
