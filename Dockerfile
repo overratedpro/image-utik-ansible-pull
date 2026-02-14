@@ -2,8 +2,6 @@
 
 FROM --platform=$TARGETPLATFORM debian:bookworm-slim AS builder
 
-ARG TARGETARCH
-
 RUN \
   export DPKG_FRONTEND=noninteractive \
   && apt update \
@@ -15,11 +13,13 @@ RUN \
     pkg-config \
     python3-dev \
     python3-pip \
-  && PIP_NO_BINARY=$([ $TARGETARCH = "arm" ] && echo ':all:' || echo ':none:') \
-    python3 -m pip install \
-      --upgrade \
-      --break-system-packages \
-      --root-user-action=ignore \
+  && python3 -m pip install \
+    --break-system-packages \
+    --no-binary=:all: \
+    --no-build-isolation \
+    --no-cache-dir \
+    --root-user-action=ignore \
+    --upgrade \
     ansible
 
 
