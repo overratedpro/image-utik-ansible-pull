@@ -54,7 +54,7 @@ RUN \
     --no-cache-dir \
     --root-user-action=ignore \
     --upgrade \
-    ansible
+    ansible-core
 
 
 FROM --platform=$TARGETPLATFORM debian:bookworm-slim
