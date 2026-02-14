@@ -33,7 +33,8 @@ RUN \
       --no-cache-dir \
       --root-user-action=ignore \
       --upgrade \
-      maturin; \
+      maturin \
+      setuptools-rust; \
   fi \
   && python3 -m pip install \
     --break-system-packages \
