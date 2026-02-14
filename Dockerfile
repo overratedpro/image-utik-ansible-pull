@@ -29,7 +29,7 @@ RUN \
       --default-host arm-unknown-linux-gnueabi \
       --default-toolchain \
       1.88.0; \
-    export PATH=$PATH:~/.cargo/bin; \
+    . /root/.cargo/env; \
     python3 -m pip install \
       --break-system-packages \
       --no-cache-dir \
