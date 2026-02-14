@@ -29,8 +29,8 @@ RUN \
     for name in \
       setuptools-rust \
       flit-core \
-      maturin \
       puccinialin \
+      maturin \
     ; do python3 -m pip install \
       --break-system-packages \
       --no-binary=:all: \
