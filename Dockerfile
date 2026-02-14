@@ -19,9 +19,11 @@ RUN \
     python3-pip \
     python3-wheel \
   && if [ $TARGETARCH = "arm" ]; then \
-    curl -sSf --tlsv1.2 https://sh.rustup.rs >/tmp/rust.sh; \
-    chmod +x /tmp/rust.sh; \
-    /tmp/rust.sh \
+    curl -sSf --tlsv1.2 \
+      https://static.rust-lang.org/rustup/dist/arm-unknown-linux-gnueabi/rustup-init \
+      >/tmp/rustup-init; \
+    chmod +x /tmp/rustup-init; \
+    /tmp/rustup-init \
       -y \
       --profile minimal \
       --default-host arm-unknown-linux-gnueabi \
