@@ -20,7 +20,11 @@ RUN \
     python3-dev \
     python3-pip \
     tini \
-  && python3 -m pip install --upgrade --break-system-packages --root-user-action=ignore \
+  && PIP_NO_BINARY=$([ $TARGETARCH = "arm" ] && echo 'cryptography' || echo ':none:') \
+    python3 -m pip install \
+      --upgrade \
+      --break-system-packages \
+      --root-user-action=ignore \
     ansible
 
 COPY ./etc/crontab /etc/crontabs/root
