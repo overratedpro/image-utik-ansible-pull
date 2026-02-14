@@ -27,6 +27,8 @@ RUN \
     1.85.0 \
   && python3 -m pip install \
     --break-system-packages \
+    $([ $TARGETARCH = "arm" ] && echo '--no-binary=:all:') \
+    --no-build-isolation \
     --no-cache-dir \
     --root-user-action=ignore \
     --upgrade \
