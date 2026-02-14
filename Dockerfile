@@ -29,6 +29,7 @@ RUN \
     for name in \
       setuptools-rust \
       maturin \
+      puccinialin \
     ; do python3 -m pip install \
       --break-system-packages \
       --no-binary=:all: \
