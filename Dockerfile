@@ -25,21 +25,27 @@ RUN \
       -y \
       --profile minimal \
       --default-toolchain \
-      1.85.0; \
-    for name in \
-      setuptools-rust \
-      flit-core \
-      puccinialin \
-      maturin \
-    ; do python3 -m pip install \
+      1.88.0; \
+    python3 -m pip install \
       --break-system-packages \
-      --no-binary=:all: \
-      --no-build-isolation \
       --no-cache-dir \
       --root-user-action=ignore \
       --upgrade \
-      $name; \
-    done; \
+      setuptools \
+      setuptools-rust \
+      packaging \
+      pip \
+      wheel; \
+    python3 -m pip install \
+      --break-system-packages \
+      --no-binary=:all: \
+      --no-cache-dir \
+      --root-user-action=ignore \
+      --upgrade \
+      cffi \
+      flit-core \
+      maturin \
+      puccinialin; \
   fi \
   && python3 -m pip install \
     --break-system-packages \
