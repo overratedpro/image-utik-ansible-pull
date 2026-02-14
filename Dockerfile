@@ -4,10 +4,9 @@ FROM --platform=$TARGETPLATFORM debian:bookworm-slim AS builder
 
 ARG TARGETARCH
 
-SHELL ["/bin/sh", "-e", "-o", "pipefail", "-c"]
-
 RUN \
-  export DPKG_FRONTEND=noninteractive \
+  set -e -u \
+  && export DPKG_FRONTEND=noninteractive \
   && apt update \
   && apt install -y \
     curl \
