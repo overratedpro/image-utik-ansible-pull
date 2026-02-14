@@ -2,10 +2,13 @@
 
 FROM --platform=$TARGETPLATFORM debian:bookworm-slim AS builder
 
+ARG TARGETARCH
+
 RUN \
   export DPKG_FRONTEND=noninteractive \
   && apt update \
   && apt install -y \
+    cargo \
     g++ \
     gcc \
     libffi-dev \
@@ -13,9 +16,18 @@ RUN \
     pkg-config \
     python3-dev \
     python3-pip \
+    python3-setuptools-rust \
+    python3-wheel \
+    rustc \
   && python3 -m pip install \
     --break-system-packages \
-    --no-binary=:all: \
+    --no-cache-dir \
+    --root-user-action=ignore \
+    --upgrade \
+    maturin \
+  && python3 -m pip install \
+    --break-system-packages \
+    $([ $TARGETARCH = "arm" ] && echo '--no-binary=:all:') \
     --no-build-isolation \
     --no-cache-dir \
     --root-user-action=ignore \
