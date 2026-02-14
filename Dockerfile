@@ -24,6 +24,7 @@ RUN \
     /tmp/rust.sh \
       -y \
       --profile minimal \
+      --default-host arm-unknown-linux-gnueabi \
       --default-toolchain \
       1.88.0; \
     python3 -m pip install \
