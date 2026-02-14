@@ -18,21 +18,23 @@ RUN \
     python3-dev \
     python3-pip \
     python3-wheel \
-  && curl -sSf --tlsv1.2 https://sh.rustup.rs >/tmp/rust.sh \
-  && chmod +x /tmp/rust.sh \
-  && /tmp/rust.sh \
-    -y \
-    --profile minimal \
-    --default-toolchain \
-    1.85.0 \
-  && python3 -m pip install \
-    --break-system-packages \
-    $([ $TARGETARCH = "arm" ] && echo '--no-binary=:all:') \
-    --no-build-isolation \
-    --no-cache-dir \
-    --root-user-action=ignore \
-    --upgrade \
-    maturin \
+  && if [ $TARGETARCH = "arm" ]; then \
+    curl -sSf --tlsv1.2 https://sh.rustup.rs >/tmp/rust.sh; \
+    chmod +x /tmp/rust.sh; \
+    /tmp/rust.sh \
+      -y \
+      --profile minimal \
+      --default-toolchain \
+      1.85.0; \
+    python3 -m pip install \
+      --break-system-packages \
+      --no-binary=:all: \
+      --no-build-isolation \
+      --no-cache-dir \
+      --root-user-action=ignore \
+      --upgrade \
+      maturin; \
+  fi \
   && python3 -m pip install \
     --break-system-packages \
     $([ $TARGETARCH = "arm" ] && echo '--no-binary=:all:') \
