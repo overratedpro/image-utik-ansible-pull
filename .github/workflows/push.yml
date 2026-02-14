@@ -24,7 +24,7 @@ jobs:
       id-token: write
       packages: write
     runs-on: ubuntu-latest
-    timeout-minutes: 1440 # 24h
+    timeout-minutes: 120
     steps:
       - uses: docker/setup-qemu-action@v3
       - uses: docker/setup-buildx-action@v3
