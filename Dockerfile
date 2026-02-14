@@ -21,7 +21,7 @@ RUN \
     python3-dev \
     python3-pip \
     tini \
-  && PIP_NO_BINARY=$([ $TARGETARCH = "arm" ] && echo 'cryptography' || echo ':none:') \
+  && PIP_NO_BINARY=$([ $TARGETARCH = "arm" ] && echo ':all:' || echo ':none:') \
     python3 -m pip install \
       --upgrade \
       --break-system-packages \
