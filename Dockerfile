@@ -15,7 +15,7 @@ RUN \
     g++ \
     gcc \
     git \
-    $([ $TARGETARCH = "arm" ] && echo "libc6") \
+    $([ $TARGETARCH = "arm" ] && echo "libc6 libstdc++6") \
     libffi-dev \
     python3-dev \
     python3-pip \
