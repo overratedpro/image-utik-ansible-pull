@@ -15,8 +15,9 @@ RUN \
     g++ \
     gcc \
     git \
-    $([ $TARGETARCH = "arm" ] && echo "libc6 libstdc++6") \
     libffi-dev \
+    libssl-dev \
+    pkg-config \
     python3-dev \
     python3-pip \
     tini \
