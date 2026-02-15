@@ -84,7 +84,7 @@ COPY --from=builder /usr/local/lib/python3.11/dist-packages /usr/local/lib/pytho
 
 COPY --from=builder /usr/local/bin/ansible* /usr/local/bin/
 
-COPY ./etc/crontab /etc/crontab
+COPY ./etc/crontab /etc/cron.d/ansible
 
 COPY --chmod=0755 ./bin/git_askpass /bin/
 
@@ -94,4 +94,4 @@ ENV GIT_TERMINAL_PROMPT='0'
 
 ENTRYPOINT ["/usr/bin/tini", "--"]
 
-CMD ["cron", "-f", "-L", "/dev/stdout"]
+CMD ["cron", "-f", "-L", "15"]
