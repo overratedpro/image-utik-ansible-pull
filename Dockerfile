@@ -67,6 +67,8 @@ ARG repo_name
 
 ENV GITHUB_REPO="${repo_name}"
 
+ENV GITHUB_USER=git
+
 RUN \
   export DPKG_FRONTEND=noninteractive \
   && apt update \
