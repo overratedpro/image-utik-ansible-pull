@@ -92,6 +92,6 @@ ENV GIT_ASKPASS='/bin/git_askpass'
 
 ENV GIT_TERMINAL_PROMPT='0'
 
-ENTRYPOINT ["/sbin/tini", "--"]
+ENTRYPOINT ["/usr/bin/tini", "--"]
 
 CMD ["crond", "-f", "-L", "/dev/stdout"]
