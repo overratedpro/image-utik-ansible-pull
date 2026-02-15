@@ -7,4 +7,5 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
     -C main \
     -i ansible/inventory.yml \
     ansible/site.yml \
-    >>/proc/1/fd/1 2>>/proc/1/fd/2
+    >/proc/1/fd/1 2>/proc/1/fd/2
+
