@@ -2,6 +2,6 @@
     -d /var/lib/ansible-pull \
     -U "https://github.com/${GITHUB_OWNER}/${GITHUB_REPO}.git" \
     -C main \
-    -i /var/lib/ansible-pull/ansible/inventory.yml \
-    /var/lib/ansible-pull/ansible/site.yml \
+    -i ansible/inventory.yml \
+    ansible/site.yml \
     >>/proc/1/fd/1 2>>/proc/1/fd/2
