@@ -12,7 +12,7 @@ RUN \
     py3-pip \
     tini \
   && python3 -m pip install --upgrade --break-system-packages --root-user-action=ignore \
-    ansible
+    ansible-core
 
 COPY ./etc/crontab /etc/crontabs/root
 
