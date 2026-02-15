@@ -84,7 +84,7 @@ COPY --from=builder /usr/local/lib/python3.11/dist-packages /usr/local/lib/pytho
 
 COPY --from=builder /usr/local/bin/ansible* /usr/local/bin/
 
-COPY ./etc/crontab /etc/crontabs/root
+COPY ./etc/crontab /etc/crontab
 
 COPY --chmod=0755 ./bin/git_askpass /bin/
 
