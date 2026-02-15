@@ -94,4 +94,4 @@ ENV GIT_TERMINAL_PROMPT='0'
 
 ENTRYPOINT ["/usr/bin/tini", "--"]
 
-CMD ["crond", "-f", "-L", "/dev/stdout"]
+CMD ["cron", "-f", "-L", "/dev/stdout"]
