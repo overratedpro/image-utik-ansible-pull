@@ -1,8 +1,10 @@
 # syntax=docker/dockerfile:1.4
 
-FROM alpine:3.23
+FROM --platform=$TARGETPLATFORM alpine:3.23
 
 ARG repo_name
+
+ENV GITHUB_USER=git
 
 ENV GITHUB_REPO="${repo_name}"
 
