@@ -4,8 +4,6 @@ FROM --platform=$TARGETPLATFORM alpine:3.23
 
 ARG repo_name
 
-ENV GITHUB_USER=git
-
 ENV GITHUB_REPO="${repo_name}"
 
 RUN \
@@ -19,6 +17,8 @@ RUN \
 COPY ./etc/crontab /etc/crontabs/root
 
 COPY --chmod=0755 ./bin/git_askpass /bin/
+
+ENV GITHUB_USER=git
 
 ENV GIT_ASKPASS='/bin/git_askpass'
 
