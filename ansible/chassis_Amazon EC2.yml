@@ -1,4 +1,0 @@
-- hosts: ansible.local
-  tasks:
-    - debug:
-        var: hostvars

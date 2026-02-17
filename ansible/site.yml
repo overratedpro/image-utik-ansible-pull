@@ -1,3 +1,4 @@
 - hosts: localhost
   tasks:
-    - ansible.playbook.include_playbook: "chassis_{{ ansible_facts.chassis_asset_tag }}.yml"
+    - ansible.playbook.include_tasks:
+        file: "tasks/chassis_{{ ansible_facts.chassis_asset_tag }}.yml"
