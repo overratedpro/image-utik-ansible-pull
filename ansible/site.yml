@@ -1,6 +1,3 @@
 - hosts: localhost
   tasks:
-    - debug:
-        msg: "running {{ ansible_facts.chassis_asset_tag }}.yml"
-
-- import_playbook: "chassis_{{ hostvars[localhost].ansible_facts.chassis_asset_tag }}.yml"
+    - ansible.playbook.include_playbook: "chassis_{{ ansible_facts.chassis_asset_tag }}.yml"
