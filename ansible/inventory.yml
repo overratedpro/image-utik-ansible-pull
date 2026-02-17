@@ -1,5 +1,4 @@
 ungrouped:
   hosts:
     localhost:
-      connection: local
-      gather_facts: no
+      ansible_connection: local
